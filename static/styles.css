@@ -3,3 +3,12 @@
     background: #f48a00;
     padding: 20px;
 }
+.nav-button-text {
+    color: white;
+}
+.nav-button-text:hover {
+    color: black;
+}
+.h3-text-color {
+    color: white;
+}
