@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Genome analysis</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        {% include "header.html" %}
+
+        <h3>Choose drug:</h3>
+        {{form.autocomp.label}}: {{ form.autocomp }}
+		<script>
+			$(function () {
+				var getData = function (request, response) {
+					$.getJSON(
+						{{url_for("autocomplete")}} + "?term=" + request.term,
+						function (data) {
+							response(data);
+						});
+				};
+ 
+                $("#autocomplete").autocomplete({
+                    source: getData,
+                    minLength: 2
+                });
+			});
+		</script>
+
+        {% include "footer.html" %}
+
+    </div>
+</body>
+
+</html>
