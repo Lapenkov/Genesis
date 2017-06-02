@@ -36,20 +36,20 @@ def autocomplete():
     return Response(json.dumps(cursor.fetchall()), mimetype='application/json')
 
 
-@app.route('/analyzis', methods=['GET', 'POST'])
-def analyzis():
+@app.route('/analysis', methods=['GET', 'POST'])
+def analysis():
     form = SearchForm(request.form)
-    return render_template('analyzis.html', form=form)
-
-
-@app.route('/')
-def main():
-    return render_template('index.html')
+    return render_template('analysis.html', form=form)
 
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+
+@app.route('/')
+def main():
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
