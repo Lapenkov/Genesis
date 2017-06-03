@@ -1,6 +1,5 @@
+# coding: utf-8
 import json
-import wtforms as wt
-from wtforms import TextField, Form
 from flask import (
     Flask,
     Response,
@@ -25,26 +24,28 @@ class SearchForm(Form):
     autocomp = TextField('autocomp', id='autocomplete')
 
 
-@app.route('/autocomplete', methods=['GET', 'POST'])
-def autocomplete():
-    app.logger.debug(request.args)
-    search = request.args.get('autocomplete')
-    app.logger.debug(search)
-    cursor = db.cursor()
-    sql = "SELECT name FROM drug"
-    cursor.execute(sql)
-    return Response(json.dumps(cursor.fetchall()), mimetype='application/json')
-
-
 @app.route('/analysis', methods=['GET', 'POST'])
 def analysis():
-    form = SearchForm(request.form)
-    return render_template('analysis.html', form=form)
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM drug")
+    drugs = cursor.fetchall()
+    cursor.execute("SELECT * FROM polymorphism")
+    genes = cursor.fetchall()
+    return render_template('analysis.html', drugs=drugs, genes=genes)
 
 
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+
+@app.route('/result', methods=['POST'])
+def result():
+    result = u"Коррекция не требуется"
+    args = request.form
+    gene = args['gene']
+    drug = args['drug']
+    return result
 
 
 @app.route('/')
