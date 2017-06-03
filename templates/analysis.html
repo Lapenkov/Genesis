@@ -15,7 +15,22 @@
 
     <div class="container">
 
-        {% include "header.html" %}
+        <div class="header">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li>
+                        <a class="nav-button-text" href="{{ url_for('main') }}">На главную</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ url_for('analysis')}}">Провести анализ</a>
+                    </li>
+                    <li>
+                        <a class="nav-button-text" href="{{ url_for('about') }}">О проекте</a>
+                    </li>
+                </ul>
+            </nav>
+            <h3 class="h3-text-color">Docsters</h3>
+        </div>
 
         <h3>Название лекарства:</h3>
         <input type="text" name="drug" id="drug_autocomplete"/>
@@ -62,7 +77,7 @@
         } );
 		$(document).ready(function() {
 			$("#get_res").click(function() {
-				$.post("{{url_for('result')}}", 
+				$.post("{{url_for('result')}}",
 					{
 						gene: $('#gene_autocomplete').val(),
                         drug: $('#drug_autocomplete').val()

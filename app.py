@@ -8,7 +8,9 @@ from flask import (
 )
 import pymysql
 
+
 app = Flask(__name__)
+
 
 db = pymysql.connect(host='78.46.211.29',
                      port=3306,
@@ -16,12 +18,6 @@ db = pymysql.connect(host='78.46.211.29',
                      passwd='sceincekaknerugatsamatom',
                      db='science',
                      charset='utf8')
-
-NAMES = ['abc', 'abcd', 'abcde']
-
-
-class SearchForm(Form):
-    autocomp = TextField('autocomp', id='autocomplete')
 
 
 @app.route('/analysis', methods=['GET', 'POST'])
@@ -51,6 +47,7 @@ def result():
 @app.route('/')
 def main():
     return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
