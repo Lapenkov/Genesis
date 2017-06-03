@@ -37,7 +37,7 @@ def about():
 
 @app.route('/result', methods=['POST'])
 def result():
-    result = u"Коррекция не требуется"
+    result = u"Нет данных"
     args = request.form
     gene = args['gene']
     drug = args['drug']

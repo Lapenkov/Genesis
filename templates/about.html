@@ -1,46 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>About</title>
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Анализ генов</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/maststyles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
+  </head>
 
-<body>
+  <body>
 
-    <div class="container">
-        <div class="header">
-            <nav>
-                <ul class="nav nav-pills pull-right">
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+            <img src="{{ url_for('static', filename='pictures/docsters.png') }}" class="logo">
+              <nav>
+                <ul class="nav masthead-nav">
                     <li>
-                        <a class="nav-button-text" href="{{ url_for('main') }}">На главную</a>
+                        <a href="{{ url_for('main') }}">На главную</a>
                     </li>
                     <li>
-                        <a class="nav-button-text" href="{{ url_for('analysis')}}">Провести анализ</a>
+                        <a href="{{ url_for('analysis')}}">Провести анализ</a>
                     </li>
                     <li class="active">
-                        <a class="nav-button-text" href="{{ url_for('about') }}">О проекте</a>
+                        <a href="{{ url_for('about') }}">О проекте</a>
                     </li>
                 </ul>
-            </nav>
-            <h3 class="h3-text-color">Docsters</h3>
-        </div>
-    <div>
+              </nav>
+            </div>
+          </div>
 
-    <div>
-        <h2>О проекте: </h2><p>На сегодняшний день в умах клинических врачей стойко укоренилась мысль
-        о необходимости индивидуального подхода к каждому пациенту, в том числе и в вопросах дозировки лекарственных веществ.</p>
-        <h2>Фармогеномика - </h2><p>отрасль фармацевтики и фармакологии, которая исследует влияние генетической вариации каждого
-        человека в его ответе на лекарственное средство.</p>
-        <p>Мы группа энтузиастов (программистов и медиков), работающих для того, чтобы врачам-клиницистам было легче ориентироваться в мире генетического анализа. </p>
-        <p>Наше приложение позволяет получить рекомендации по корректировке дозы лекарственного вещества в соответствии со структурой генов конкретного человека.</p>
-        <p>Рекомендации формируются на основании клинических исследований.</p>
+          
+        <div>
+            <h2>О проекте: </h2><p>На сегодняшний день в умах клинических врачей стойко укоренилась мысль
+            о необходимости индивидуального подхода к каждому пациенту, в том числе и в вопросах дозировки лекарственных веществ.</p>
+            <b>Фармогеномика - </b><p>отрасль фармацевтики и фармакологии, которая исследует влияние генетической вариации каждого
+            человека в его ответе на лекарственное средство.</p>
+            <p>Мы - группа энтузиастов (программистов и медиков), работающих для того, чтобы врачам-клиницистам было легче ориентироваться в мире генетического анализа. </p>
+            <p>Наше приложение позволяет получить рекомендации по корректировке дозы лекарственного вещества в соответствии со структурой генов конкретного человека.</p>
+            <p>Рекомендации формируются на основании клинических исследований.</p>
+        </div>
+
+        {% include "footer.html" %}
+
+        </div>
+
+      </div>
+
     </div>
 
-    {% include "footer.html" %}
-
-</body>
-
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.min.js') }}"></script>
+  </body>
 </html>

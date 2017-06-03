@@ -12,3 +12,22 @@
 .h3-text-color {
     color: white;
 }
+.result-box {
+	display: none;
+	font-size: 20px;
+	background-color: gray;
+	border-radius: 5px;
+	padding: 15px;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+}
+.logo {
+	width: 200px;
+	height: 170px;
+	position: absolute;
+	top: 10%;
+	left: 1%;
+}

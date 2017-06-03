@@ -1,47 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Genome analysis</title>
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Анализ генов</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/maststyles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
+  </head>
 
-<body>
+  <body>
 
-    <div class="container">
+    <div class="site-wrapper">
 
-        <div class="header">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li class="active">
-                        <a class="nav-button-text" href="{{ url_for('main') }}">На главную</a>
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="masthead clearfix">
+            <div class="inner">
+            <img src="{{ url_for('static', filename='pictures/docsters.png') }}" class="logo">
+              <nav>
+                <ul class="nav masthead-nav">
+                  <li class="active">
+                        <a href="{{ url_for('main') }}">На главную</a>
                     </li>
                     <li>
-                        <a class="nav-button-text" href="{{ url_for('analysis')}}">Провести анализ</a>
+                        <a href="{{ url_for('analysis')}}">Провести анализ</a>
                     </li>
                     <li>
-                        <a class="nav-button-text" href="{{ url_for('about') }}">О проекте</a>
+                        <a href="{{ url_for('about') }}">О проекте</a>
                     </li>
                 </ul>
-            </nav>
-            <h3 class="h3-text-color">Docsters</h3>
-        </div>
+              </nav>
+            </div>
+          </div>
 
-        <div class="jumbotron">
-            <h1>Добро пожаловать в Docsters!</h1>
-            <p class="lead"></p>
-            <p>Приложение для врачей, повзоляющее правильно выбрать дозировку</p>
-            <a href="analysis">
-              <button type="button" class="btn btn-success">Попробовать сейчас!</button>
-            </a>
-
-        </div>
+          <div class="inner cover">
+            <h1 class="cover-heading">Добро пожаловать в Docsters!</h1>
+            <p class="lead">Приложение для врачей, повзоляющее правильно выбрать дозировку.</p>
+            <p class="lead">
+              <a href="{{ url_for('analysis') }}" class="btn btn-lg btn btn-success">Попробовать сейчас!</a>
+            </p>
+          </div>
 
         {% include "footer.html" %}
 
-    </div>
-</body>
+        </div>
 
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{{ url_for('static', filename='bootstrap/bootstrap.min.js') }}"></script>
+  </body>
 </html>
