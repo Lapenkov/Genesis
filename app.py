@@ -24,9 +24,9 @@ db = pymysql.connect(host='78.46.211.29',
 def analysis():
     cursor = db.cursor()
     cursor.execute("SELECT * FROM drug")
-    drugs = cursor.fetchall()
-    cursor.execute("SELECT * FROM polymorphism")
-    genes = cursor.fetchall()
+    entries = cursor.fetchall()
+    genes = set([e[1] for e in entries])
+    drugs = set([e[2] for e in entries])
     return render_template('analysis.html', drugs=drugs, genes=genes)
 
 
@@ -41,6 +41,12 @@ def result():
     args = request.form
     gene = args['gene']
     drug = args['drug']
+    cursor = db.cursor()
+    cursor.execute(u"SELECT recommendation FROM "
+                   u"drug WHERE gene=\"{}\" AND drug=\"{}\"".format(gene, drug))
+    recommendations = cursor.fetchall()
+    if recommendations:
+        result = recommendations[0][0]
     return result
 
 

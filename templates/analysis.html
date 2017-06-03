@@ -38,7 +38,7 @@
         $( function() {
             var availableTags = [
                 {% for item in drugs %}
-                    "{{item[1]}}",
+                    "{{item}}",
                 {% endfor %}
                 ""
             ];
@@ -61,7 +61,7 @@
         $( function() {
             var availableTags = [
                 {% for item in genes %}
-                    "{{item[1]}}",
+                    "{{item}}",
                 {% endfor %}
                 ""
             ];
